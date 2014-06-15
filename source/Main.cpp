@@ -20,6 +20,7 @@ int main() {
 	// 1. create ruleset object
     Ruleset questRuleset;
     Ruleset story;
+    Ruleset weapons;
 
 	// 2. enter ruleset data
     questRuleset.Rule("Quest")->Sym("Objective")->Sym("Reward")->End();
@@ -31,46 +32,112 @@ int main() {
     questRuleset.Rule("GrillTheMeat")->Sym("DeliverFood")->End();
 
 
+    // ==============================================
+    // ==============================================
 
-    story.Rule("STORY")->Sym("Itan mia fora")->Sym("ATOMO")->Sym("pou forouse")->Sym("ROUXO")->Sym("kai pige")->Sym("MEROS")->End();
+    weapons.Rule("NAMEDWEAPON")->Sym("WEAPON")->End();
+    weapons.Rule("NAMEDWEAPON")->Sym("The")->Sym("PREFIX")->Sym("WEAPON")->End();
+    weapons.Rule("WEAPON")->Sym("TYPE")->Sym("STATS")->End();
+    weapons.Rule("WEAPON")->Sym("TYPE")->Sym("ENCHANT")->Sym("STATS")->End();
     
-    story.Rule("ATOMO")->Sym("mia Prigkipisa")->End();
-    story.Rule("ATOMO")->Sym("enas polemistis")->End();
-    story.Rule("ATOMO")->Sym("o Antonis Samaras")->End();
-    story.Rule("ATOMO")->Sym("o Papas")->End();
-    story.Rule("ATOMO")->Sym("o Dante apo to DMC")->End();
-    story.Rule("ATOMO")->Sym("mia gria")->End();
-    
-    story.Rule("ROUXO")->Sym("foustani")->End();
-    story.Rule("ROUXO")->Sym("panoplia")->End();
-    story.Rule("ROUXO")->Sym("kostoumi")->End();
-    story.Rule("ROUXO")->Sym("vraka")->End();
-    story.Rule("ROUXO")->Sym("sexy esorouxo")->End();
-    story.Rule("ROUXO")->Sym("perikefalea")->End();
-    story.Rule("ROUXO")->Sym("dantela")->End();
-    story.Rule("ROUXO")->Sym("magio kai psa8ino kapelo")->End();
-    
-    story.Rule("MEROS")->Sym("ekdromi.")->End();
-    story.Rule("MEROS")->Sym("na polemisei ton drako.")->End();
-    story.Rule("MEROS")->Sym("sto diaolo!!!")->End();
-    story.Rule("MEROS")->Sym("stin Alabama.")->End();
-    story.Rule("MEROS")->Sym("stin toualeta.")->End();
-    story.Rule("MEROS")->Sym("ston Vorio Polo.")->End();
-    story.Rule("MEROS")->Sym("gamiontas...")->End();
-    story.Rule("MEROS")->Sym("ston paradeiso.")->End();
-    story.Rule("MEROS")->Sym("spiti...")->End();
+    weapons.Rule("TYPE")->Sym("SWORD")->End();
+    weapons.Rule("TYPE")->Sym("STAFF")->End();
+    weapons.Rule("TYPE")->Sym("MACE")->End();
+    weapons.Rule("TYPE")->Sym("BOW")->End();
+    weapons.Rule("TYPE")->Sym("AXE")->End();
+    weapons.Rule("TYPE")->Sym("SPEAR")->End();
+
+    weapons.Rule("SWORD")->Sym("Longsword")->End();
+    weapons.Rule("SWORD")->Sym("Shortsword")->End();
+    weapons.Rule("SWORD")->Sym("Greatsword")->End();
+    weapons.Rule("SWORD")->Sym("Rapier")->End();
+
+    weapons.Rule("STAFF")->Sym("Wooden Staff")->End();
+    weapons.Rule("STAFF")->Sym("Magic Staff")->End();
+    weapons.Rule("STAFF")->Sym("Holy Staff")->End();
+    weapons.Rule("STAFF")->Sym("Royal Staff")->End();
+
+    weapons.Rule("MACE")->Sym("Mace")->End();
+    weapons.Rule("MACE")->Sym("Royal Mace")->End();
+
+    weapons.Rule("BOW")->Sym("Longbow")->End();
+    weapons.Rule("BOW")->Sym("Shortbow")->End();
+    weapons.Rule("BOW")->Sym("Crossbow")->End();
+
+    weapons.Rule("AXE")->Sym("Greataxe")->End();
+    weapons.Rule("AXE")->Sym("Axe")->End();
+    weapons.Rule("AXE")->Sym("Throwing Axe")->End();
+
+    weapons.Rule("SPEAR")->Sym("Spear")->End();
+    weapons.Rule("SPEAR")->Sym("Giant Spear")->End();
+
+    weapons.Rule("STATS")->Sym("\n")->Sym("Primary stat:")->Sym("PRIMARYSTAT")->Sym("\n")->Sym("Secondary stat:")->Sym("SECONDARYSTAT")->End();
+    weapons.Rule("PRIMARYSTAT")->Sym("STATTYPE")->End();
+    weapons.Rule("SECONDARYSTAT")->Sym("STATTYPE")->End();
+    weapons.Rule("STATTYPE")->Sym("Offence")->End();
+    weapons.Rule("STATTYPE")->Sym("Defence")->End();
+    weapons.Rule("STATTYPE")->Sym("Agility")->End();
+    weapons.Rule("STATTYPE")->Sym("Health")->End();
+    weapons.Rule("STATTYPE")->Sym("Magic")->End();
+    weapons.Rule("STATTYPE")->Sym("Stamina")->End();
+    weapons.Rule("STATTYPE")->Sym("Intelligence")->End();
+    weapons.Rule("STATTYPE")->Sym("Wisdom")->End();
+
+
+    weapons.Rule("ENCHANT")->Sym("of the Dragon")->End();
+    weapons.Rule("ENCHANT")->Sym("of Mount Doom")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Fire")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Forgotten Nightmares")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Angry Joe")->End();
+    weapons.Rule("ENCHANT")->Sym("of the N00B")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Great Wizard")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Water")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Thunder")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Deep Sea")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Undeath")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Stone")->End();
+    weapons.Rule("ENCHANT")->Sym("of Death")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Dream")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Munchkin")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Seven Ravens")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Infinity")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Thousand Souls")->End();
+    weapons.Rule("ENCHANT")->Sym("of Bessy")->End();
+    weapons.Rule("ENCHANT")->Sym("of the Unicorn")->End();
+
+
+    weapons.Rule("PREFIX")->Sym("Cursed")->End();
+    weapons.Rule("PREFIX")->Sym("Uber")->End();
+    weapons.Rule("PREFIX")->Sym("Excelsior")->End();
+    weapons.Rule("PREFIX")->Sym("Dominant")->End();
+    weapons.Rule("PREFIX")->Sym("Fabulous")->End();
+    weapons.Rule("PREFIX")->Sym("Uber")->End();
+    weapons.Rule("PREFIX")->Sym("Ascendent")->End();
+    weapons.Rule("PREFIX")->Sym("Cardinal")->End();
+    weapons.Rule("PREFIX")->Sym("Sovereign")->End();
+    weapons.Rule("PREFIX")->Sym("Over-Powered")->End();
+    weapons.Rule("PREFIX")->Sym("Enchanted")->End();
+    weapons.Rule("PREFIX")->Sym("Bewitched")->End();
+    weapons.Rule("PREFIX")->Sym("Mesmerizing")->End();
+    weapons.Rule("PREFIX")->Sym("Ravishing")->End();
+    weapons.Rule("PREFIX")->Sym("Savage")->End();
+
+
+    // ==============================================
+    // ==============================================
+
 
 	// 3. create generator
     Generator contentGenerator;
 
 	// 4. give ruleset to generator
-    contentGenerator.SetRuleset(&story);
+    contentGenerator.SetRuleset(&weapons);
 
 	// 5. ask generator to make stuff, dont forget to say "please".
     vector<string> gen;
 
-    for(int i=0; i<10; i++) {
-        gen = contentGenerator.Generate("STORY");
+    for(int i=0; i<20; i++) {
+        gen = contentGenerator.Generate("NAMEDWEAPON");
         for(vector<string>::iterator it = gen.begin(); it!=gen.end(); it++) {
             cout << *it << " ";
         }

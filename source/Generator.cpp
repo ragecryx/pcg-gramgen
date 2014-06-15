@@ -20,7 +20,9 @@ vector<string> Generator::Generate(string baseRule) {
     mainList.clear();
     tempList.clear();
 
-    mainList.push_back(baseRule);
+    vector<vector<string>> initRule = mpRuleset->GetRulesFor(baseRule);
+    vector<string> initial = initRule[rand() % initRule.size()];
+    mainList = initial;
 
     bool run;
     do {

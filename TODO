@@ -1,0 +1,4 @@
+[ ] Read production rules from file
+[ ] Change End() method to receive and save a weight for each rule.
+[ ] template<class T> on Ruleset to be able to contain arbitrary objects
+[ ] One the generator run rand() through a normal distribution to have control over the production rules frequency.
