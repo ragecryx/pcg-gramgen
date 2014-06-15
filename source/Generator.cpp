@@ -33,8 +33,6 @@ vector<string> Generator::Generate(string baseRule) {
                 vector<vector<string>> rules = mpRuleset->GetRulesFor(*it);
                 if(rules.size() > 0) {
                     vector<string> tobeadded = rules[rand() % rules.size()];
-                    cout << rand() << endl;
-                    //tempList.resize(tempList.size() + tobeadded.size());
                     tempList.insert(tempList.end(), tobeadded.begin(), tobeadded.end());
                 }
             }
