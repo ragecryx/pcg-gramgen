@@ -1,6 +1,9 @@
-#include "PCGGram\Ruleset.h"
+#include <PCGGram/Ruleset.h>
 
 using namespace PCGGrammar;
+
+
+// Ruleset class = = = = = = =
 
 Ruleset::Ruleset() { }
 
@@ -11,6 +14,7 @@ __RulesetWork* Ruleset::Rule(string sym) {
     __RulesetWork* work = new __RulesetWork(this, sym);
     return work;
 }
+
 
 void Ruleset::AddRule(string rule, vector<string> components) {
     mRules[rule].push_back(components);
@@ -25,23 +29,22 @@ bool Ruleset::IsTerminal(string sym) {
 }
 
 
-vector<vector<string>> Ruleset::GetRulesFor(string sym) {
+vector< vector<string> > Ruleset::GetRulesFor(string sym) {
     if(mRules.find(sym) != mRules.end())
         return mRules[sym];
     else
-        return vector<vector<string>>();
+        return vector< vector<string> >();
 }
 
 
-
-
-
+// __RulesetWork class = = = = = = =
 
 __RulesetWork::__RulesetWork(Ruleset* parentObject, string parentRule) {
     mpParent = parentObject;
     mParentRule = parentRule;
     mRule.clear();
 }
+
 
 __RulesetWork* __RulesetWork::Sym(string sym) {
     mRule.push_back(sym);

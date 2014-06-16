@@ -12,6 +12,13 @@ using namespace std;
 
 
 namespace PCGGrammar {
+
+
+    // Generator class
+    //
+    // Instantiate and set the ruleset to be used with instance.SetRuleset(&rulesetinstance)
+    // then call instance.Generate("COMPOSITE_SYMBOL_YOU_WANT_TO_GENERATE") to generate the
+    // stuff you want.
     
     class Generator {
         public:
@@ -23,6 +30,7 @@ namespace PCGGrammar {
             void SetRuleset(Ruleset* ruleset);
             vector<string> Generate(string baseRule);
     };
+
 
 }
 

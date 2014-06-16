@@ -1,4 +1,4 @@
-#include "PCGGram\Generator.h"
+#include "PCGGram/Generator.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -20,7 +20,7 @@ vector<string> Generator::Generate(string baseRule) {
     mainList.clear();
     tempList.clear();
 
-    vector<vector<string>> initRule = mpRuleset->GetRulesFor(baseRule);
+    vector< vector<string> > initRule = mpRuleset->GetRulesFor(baseRule);
     vector<string> initial = initRule[rand() % initRule.size()];
     mainList = initial;
 
@@ -32,7 +32,7 @@ vector<string> Generator::Generate(string baseRule) {
                 tempList.push_back(*it);
             else {
                 run = true;
-                vector<vector<string>> rules = mpRuleset->GetRulesFor(*it);
+                vector< vector<string> > rules = mpRuleset->GetRulesFor(*it);
                 if(rules.size() > 0) {
                     vector<string> tobeadded = rules[rand() % rules.size()];
                     tempList.insert(tempList.end(), tobeadded.begin(), tobeadded.end());

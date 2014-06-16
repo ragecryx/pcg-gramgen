@@ -7,8 +7,8 @@
 using namespace std;
 
 
-#include <PCGGram\Ruleset.h>
-#include <PCGGram\Generator.h>
+#include <PCGGram/Ruleset.h>
+#include <PCGGram/Generator.h>
 
 using namespace PCGGrammar;
 
