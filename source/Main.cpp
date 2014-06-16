@@ -18,28 +18,37 @@ int main() {
     srand(time(NULL));
 
 	// 1. create ruleset object
-    Ruleset questRuleset;
-    Ruleset story;
+    Ruleset quests;
     Ruleset weapons;
 
+
 	// 2. enter ruleset data
-    questRuleset.Rule("Quest")->Sym("Objective")->Sym("Reward")->End();
-    questRuleset.Rule("Objective")->Sym("KillMonsters")->End();
-    questRuleset.Rule("Objective")->Sym("GatherItems")->End();
-    questRuleset.Rule("Objective")->Sym("HuntForFood")->Sym("CookFood")->End();
-    questRuleset.Rule("CookFood")->Sym("GatherWood")->Sym("LightFire")->Sym("GrillTheMeat")->End();
-    questRuleset.Rule("GrillTheMeat")->Sym("EatFood")->End();
-    questRuleset.Rule("GrillTheMeat")->Sym("DeliverFood")->End();
+
+    // ==============================================
+    // Quest generation rules
+    // ==============================================
+
+    quests.Rule("Quest")->Sym("Objective")->Sym("Reward")->End();
+    quests.Rule("Objective")->Sym("KillMonsters")->End();
+    quests.Rule("Objective")->Sym("GatherItems")->End();
+    quests.Rule("Objective")->Sym("HuntForFood")->Sym("CookFood")->End();
+    quests.Rule("CookFood")->Sym("GatherWood")->Sym("LightFire")->Sym("GrillTheMeat")->End();
+    quests.Rule("GrillTheMeat")->Sym("EatFood")->End();
+    quests.Rule("GrillTheMeat")->Sym("DeliverFood")->End();
 
 
     // ==============================================
+    // Weapon generation rules
     // ==============================================
 
-    weapons.Rule("NAMEDWEAPON")->Sym("WEAPON")->End();
-    weapons.Rule("NAMEDWEAPON")->Sym("The")->Sym("PREFIX")->Sym("WEAPON")->End();
-    weapons.Rule("WEAPON")->Sym("TYPE")->Sym("STATS")->End();
-    weapons.Rule("WEAPON")->Sym("TYPE")->Sym("ENCHANT")->Sym("STATS")->End();
+    weapons.Rule("WEAPON")->Sym("UNNAMED_WEAPON")->End();
+    weapons.Rule("WEAPON")->Sym("NAMED_WEAPON")->End();
+
+    weapons.Rule("NAMED_WEAPON")->Sym("The")->Sym("PREFIX")->Sym("UNNAMED_WEAPON")->End();
+    weapons.Rule("UNNAMED_WEAPON")->Sym("TYPE")->Sym("STATS")->End();
+    weapons.Rule("UNNAMED_WEAPON")->Sym("TYPE")->Sym("ENCHANT")->Sym("STATS")->End();
     
+
     weapons.Rule("TYPE")->Sym("SWORD")->End();
     weapons.Rule("TYPE")->Sym("STAFF")->End();
     weapons.Rule("TYPE")->Sym("MACE")->End();
@@ -71,9 +80,12 @@ int main() {
     weapons.Rule("SPEAR")->Sym("Spear")->End();
     weapons.Rule("SPEAR")->Sym("Giant Spear")->End();
 
-    weapons.Rule("STATS")->Sym("\n")->Sym("Primary stat:")->Sym("PRIMARYSTAT")->Sym("\n")->Sym("Secondary stat:")->Sym("SECONDARYSTAT")->End();
-    weapons.Rule("PRIMARYSTAT")->Sym("STATTYPE")->End();
-    weapons.Rule("SECONDARYSTAT")->Sym("STATTYPE")->End();
+
+    weapons.Rule("STATS")->Sym("PRIMARYSTAT")->Sym("SECONDARYSTAT")->End();
+
+    weapons.Rule("PRIMARYSTAT")->Sym("\n Primary Stat:")->Sym("STATTYPE")->End(); // Added a fake Sym(bol) for printing purposes ->Sym("\n Primary Stat:")->
+    weapons.Rule("SECONDARYSTAT")->Sym("\n Secondary Stat:")->Sym("STATTYPE")->End();
+
     weapons.Rule("STATTYPE")->Sym("Offence")->End();
     weapons.Rule("STATTYPE")->Sym("Defence")->End();
     weapons.Rule("STATTYPE")->Sym("Agility")->End();
@@ -120,11 +132,8 @@ int main() {
     weapons.Rule("PREFIX")->Sym("Bewitched")->End();
     weapons.Rule("PREFIX")->Sym("Mesmerizing")->End();
     weapons.Rule("PREFIX")->Sym("Ravishing")->End();
-    weapons.Rule("PREFIX")->Sym("Savage")->End();
+    weapons.Rule("PREFIX")->Sym("Savage")->End();  
 
-
-    // ==============================================
-    // ==============================================
 
 
 	// 3. create generator
@@ -136,15 +145,14 @@ int main() {
 	// 5. ask generator to make stuff, dont forget to say "please".
     vector<string> gen;
 
-    for(int i=0; i<20; i++) {
-        gen = contentGenerator.Generate("NAMEDWEAPON");
+    cout << "Press enter to generate more...\n===============================\n\n";
+    do{
+        gen = contentGenerator.Generate("WEAPON");
         for(vector<string>::iterator it = gen.begin(); it!=gen.end(); it++) {
             cout << *it << " ";
         }
         cout << endl << endl;
-    }
-
-    cin.get();
+    } while(cin.get());
 
 	return 0;
 }
