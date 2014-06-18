@@ -29,11 +29,9 @@ void Generator::SetRuleset(Ruleset* ruleset) {
     mpRuleset = ruleset;
 }
 
-vector<string> Generator::Generate(string baseRule) {
+vector<string> Generator::Generate(string baseRule) const {
     ComponentVector mainList;
     ComponentVector tempList;
-    mainList.clear();
-    tempList.clear();
 
     const pair< RuleMap::const_iterator, RuleMap::const_iterator > &range = mpRuleset->GetRulesFor(baseRule);
     ComponentVector initial = random_element(range.first, range.second)->second;
@@ -43,7 +41,9 @@ vector<string> Generator::Generate(string baseRule) {
     bool run;
     do {
         run = false;
-        for(ComponentVector::iterator it = mainList.begin(); it != mainList.end(); ++it) {
+        tempList.clear();
+        
+        for(ComponentVector::const_iterator it = mainList.begin(); it != mainList.end(); ++it) {
             if(mpRuleset->IsTerminal(*it))
                 tempList.push_back(*it);
             else {
@@ -56,9 +56,9 @@ vector<string> Generator::Generate(string baseRule) {
                 }
             }
         }
-        mainList.clear();
+        
         mainList = tempList;
-        tempList.clear();
+        
     } while(run);
 
     return mainList;

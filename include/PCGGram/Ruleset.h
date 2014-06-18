@@ -32,8 +32,8 @@ namespace PCGGrammar {
         public:
             __RulesetWork* Rule(string sym);
             void AddRule(string rule, ComponentVector components);
-            bool IsTerminal(string sym);
-            pair< RuleMap::const_iterator, RuleMap::const_iterator > GetRulesFor(string sym);
+            bool IsTerminal(string sym) const;
+            pair< RuleMap::const_iterator, RuleMap::const_iterator > GetRulesFor(string sym) const;
     };
 
 

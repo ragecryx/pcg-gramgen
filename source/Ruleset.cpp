@@ -21,7 +21,7 @@ void Ruleset::AddRule(string rule, ComponentVector components) {
 }
 
 
-bool Ruleset::IsTerminal(string sym) {
+bool Ruleset::IsTerminal(string sym) const {
     if(mRules.find(sym) != mRules.end())
         return false;
     else
@@ -29,7 +29,7 @@ bool Ruleset::IsTerminal(string sym) {
 }
 
 
-pair< RuleMap::const_iterator, RuleMap::const_iterator > Ruleset::GetRulesFor(string sym) {    
+pair< RuleMap::const_iterator, RuleMap::const_iterator > Ruleset::GetRulesFor(string sym) const {
     return mRules.equal_range(sym);
 }
 
