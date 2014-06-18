@@ -28,7 +28,7 @@ namespace PCGGrammar {
             Ruleset* mpRuleset;
         public:
             void SetRuleset(Ruleset* ruleset);
-            vector<string> Generate(string baseRule);
+            ComponentVector Generate(string baseRule) const;
     };
 
 

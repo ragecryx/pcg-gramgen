@@ -16,12 +16,12 @@ __RulesetWork* Ruleset::Rule(string sym) {
 }
 
 
-void Ruleset::AddRule(string rule, vector<string> components) {
-    mRules[rule].push_back(components);
+void Ruleset::AddRule(string rule, ComponentVector components) {
+    mRules.insert( pair<string, ComponentVector>(rule, components) );
 }
 
 
-bool Ruleset::IsTerminal(string sym) {
+bool Ruleset::IsTerminal(string sym) const {
     if(mRules.find(sym) != mRules.end())
         return false;
     else
@@ -29,11 +29,8 @@ bool Ruleset::IsTerminal(string sym) {
 }
 
 
-vector< vector<string> > Ruleset::GetRulesFor(string sym) {
-    if(mRules.find(sym) != mRules.end())
-        return mRules[sym];
-    else
-        return vector< vector<string> >();
+pair< RuleMap::const_iterator, RuleMap::const_iterator > Ruleset::GetRulesFor(string sym) const {
+    return mRules.equal_range(sym);
 }
 
 
