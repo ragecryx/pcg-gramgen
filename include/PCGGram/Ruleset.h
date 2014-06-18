@@ -9,6 +9,9 @@
 using namespace std;
 
 namespace PCGGrammar {
+    
+    typedef vector<string> ComponentVector;
+    typedef multimap< string, ComponentVector > RuleMap;
 
     class __RulesetWork;
     
@@ -25,12 +28,12 @@ namespace PCGGrammar {
             Ruleset();
             ~Ruleset();
         private:
-            map< string, vector< vector<string> > > mRules;
+            RuleMap mRules;
         public:
             __RulesetWork* Rule(string sym);
-            void AddRule(string rule, vector<string> components);
+            void AddRule(string rule, ComponentVector components);
             bool IsTerminal(string sym);
-            vector< vector<string> > GetRulesFor(string sym);
+            pair< RuleMap::const_iterator, RuleMap::const_iterator > GetRulesFor(string sym);
     };
 
 
