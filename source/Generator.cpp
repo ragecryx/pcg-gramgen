@@ -35,7 +35,7 @@ vector<string> Generator::Generate(string baseRule) {
     mainList.clear();
     tempList.clear();
 
-    pair< RuleMap::const_iterator, RuleMap::const_iterator > range = mpRuleset->GetRulesFor(baseRule);
+    const pair< RuleMap::const_iterator, RuleMap::const_iterator > &range = mpRuleset->GetRulesFor(baseRule);
     ComponentVector initial = random_element(range.first, range.second)->second;
     
     mainList = initial;
@@ -43,15 +43,15 @@ vector<string> Generator::Generate(string baseRule) {
     bool run;
     do {
         run = false;
-        for(vector<string>::iterator it = mainList.begin(); it != mainList.end(); it++) {
+        for(vector<string>::iterator it = mainList.begin(); it != mainList.end(); ++it) {
             if(mpRuleset->IsTerminal(*it))
                 tempList.push_back(*it);
             else {
                 run = true;
-                pair< RuleMap::const_iterator, RuleMap::const_iterator > rules = mpRuleset->GetRulesFor(*it);
+                const pair< RuleMap::const_iterator, RuleMap::const_iterator > &rules = mpRuleset->GetRulesFor(*it);
                 
                 if ( rules.first != rules.second ) {
-                    ComponentVector tobeadded = random_element(rules.first, rules.second)->second;
+                    const ComponentVector &tobeadded = random_element(rules.first, rules.second)->second;
                     tempList.insert(tempList.end(), tobeadded.begin(), tobeadded.end());
                 }
             }
