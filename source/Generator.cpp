@@ -30,8 +30,8 @@ void Generator::SetRuleset(Ruleset* ruleset) {
 }
 
 vector<string> Generator::Generate(string baseRule) {
-    vector<string> mainList;
-    vector<string> tempList;
+    ComponentVector mainList;
+    ComponentVector tempList;
     mainList.clear();
     tempList.clear();
 
