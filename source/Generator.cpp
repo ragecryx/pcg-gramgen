@@ -43,7 +43,7 @@ vector<string> Generator::Generate(string baseRule) {
     bool run;
     do {
         run = false;
-        for(vector<string>::iterator it = mainList.begin(); it != mainList.end(); ++it) {
+        for(ComponentVector::iterator it = mainList.begin(); it != mainList.end(); ++it) {
             if(mpRuleset->IsTerminal(*it))
                 tempList.push_back(*it);
             else {
