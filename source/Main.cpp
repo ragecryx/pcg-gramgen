@@ -1,9 +1,5 @@
 #include <iostream>
 
-#include <cstdio>
-#include <cstdlib>
-#include <ctime>
-
 using namespace std;
 
 
@@ -14,8 +10,6 @@ using namespace PCGGrammar;
 
 
 int main() {
-
-    srand(time(NULL));
 
 	// 1. create ruleset object
     Ruleset quests;
@@ -41,12 +35,12 @@ int main() {
     // Weapon generation rules
     // ==============================================
 
-    weapons.Rule("WEAPON")->Sym("UNNAMED_WEAPON")->End();
-    weapons.Rule("WEAPON")->Sym("NAMED_WEAPON")->End();
+    weapons.Rule("WEAPON")->Sym("UNNAMED_WEAPON")->End(0.8f);
+    weapons.Rule("WEAPON")->Sym("NAMED_WEAPON")->End(0.2f);
 
     weapons.Rule("NAMED_WEAPON")->Sym("The")->Sym("PREFIX")->Sym("UNNAMED_WEAPON")->End();
-    weapons.Rule("UNNAMED_WEAPON")->Sym("TYPE")->Sym("STATS")->End();
-    weapons.Rule("UNNAMED_WEAPON")->Sym("TYPE")->Sym("ENCHANT")->Sym("STATS")->End();
+    weapons.Rule("UNNAMED_WEAPON")->Sym("TYPE")->Sym("STATS")->End(0.8f);
+    weapons.Rule("UNNAMED_WEAPON")->Sym("TYPE")->Sym("ENCHANT")->Sym("STATS")->End(0.2f);
     
 
     weapons.Rule("TYPE")->Sym("SWORD")->End();

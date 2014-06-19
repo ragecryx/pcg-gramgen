@@ -57,5 +57,8 @@ project "PCG-GramDemo"
         defines { "NDEBUG" }
         flags { "Optimize" }
 
+    configuration { "windows", "codelite" }
+        buildoptions { "-std=c++11" }
+
     configuration { "linux", "gmake" }
         buildoptions { "-std=c++11" }

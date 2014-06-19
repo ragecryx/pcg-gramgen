@@ -12,6 +12,7 @@ namespace PCGGrammar {
     
     typedef vector<string> ComponentVector;
     typedef multimap< string, ComponentVector > RuleMap;
+    typedef multimap< string, float > DistributionMap;
 
     class __RulesetWork;
     
@@ -29,11 +30,13 @@ namespace PCGGrammar {
             ~Ruleset();
         private:
             RuleMap mRules;
+            DistributionMap mRuleWeights;
         public:
             __RulesetWork* Rule(string sym);
-            void AddRule(string rule, ComponentVector components);
+            void AddRule(string rule, ComponentVector components, float weight);
             bool IsTerminal(string sym) const;
             pair< RuleMap::const_iterator, RuleMap::const_iterator > GetRulesFor(string sym) const;
+            pair< DistributionMap::const_iterator, DistributionMap::const_iterator > GetWeightsFor(string sym) const;
     };
 
 
@@ -51,6 +54,7 @@ namespace PCGGrammar {
         public:
             __RulesetWork* Sym(string sym);
             void End();
+            void End(float weight);
     };
 
 

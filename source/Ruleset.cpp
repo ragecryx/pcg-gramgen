@@ -16,8 +16,9 @@ __RulesetWork* Ruleset::Rule(string sym) {
 }
 
 
-void Ruleset::AddRule(string rule, ComponentVector components) {
+void Ruleset::AddRule(string rule, ComponentVector components, float weight) {
     mRules.insert( pair<string, ComponentVector>(rule, components) );
+    mRuleWeights.insert( pair<string, float>(rule, weight) );
 }
 
 
@@ -31,6 +32,11 @@ bool Ruleset::IsTerminal(string sym) const {
 
 pair< RuleMap::const_iterator, RuleMap::const_iterator > Ruleset::GetRulesFor(string sym) const {
     return mRules.equal_range(sym);
+}
+
+
+pair< DistributionMap::const_iterator, DistributionMap::const_iterator > Ruleset::GetWeightsFor(string sym) const {
+    return mRuleWeights.equal_range(sym);
 }
 
 
@@ -50,6 +56,10 @@ __RulesetWork* __RulesetWork::Sym(string sym) {
 
 
 void __RulesetWork::End() {
-    mpParent->AddRule(mParentRule, mRule);
+    End(1.0f);
+}
+
+void __RulesetWork::End(float weight) {
+    mpParent->AddRule(mParentRule, mRule, weight);
     delete this;
 }
