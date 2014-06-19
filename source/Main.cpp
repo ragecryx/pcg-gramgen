@@ -35,8 +35,8 @@ int main() {
     // Weapon generation rules
     // ==============================================
 
-    weapons.Rule("WEAPON")->Sym("UNNAMED_WEAPON")->End(0.8f);
-    weapons.Rule("WEAPON")->Sym("NAMED_WEAPON")->End(0.2f);
+    weapons.Rule("WEAPON")->Sym("UNNAMED_WEAPON")->End(0.9f);
+    weapons.Rule("WEAPON")->Sym("NAMED_WEAPON")->End(0.1f);
 
     weapons.Rule("NAMED_WEAPON")->Sym("The")->Sym("PREFIX")->Sym("UNNAMED_WEAPON")->End();
     weapons.Rule("UNNAMED_WEAPON")->Sym("TYPE")->Sym("STATS")->End(0.8f);
@@ -63,13 +63,13 @@ int main() {
     weapons.Rule("MACE")->Sym("Mace")->End();
     weapons.Rule("MACE")->Sym("Royal Mace")->End();
 
-    weapons.Rule("BOW")->Sym("Longbow")->End();
-    weapons.Rule("BOW")->Sym("Shortbow")->End();
-    weapons.Rule("BOW")->Sym("Crossbow")->End();
+    weapons.Rule("BOW")->Sym("Longbow")->End(0.5f);
+    weapons.Rule("BOW")->Sym("Shortbow")->End(0.3f);
+    weapons.Rule("BOW")->Sym("Crossbow")->End(0.2f);
 
-    weapons.Rule("AXE")->Sym("Greataxe")->End();
-    weapons.Rule("AXE")->Sym("Axe")->End();
-    weapons.Rule("AXE")->Sym("Throwing Axe")->End();
+    weapons.Rule("AXE")->Sym("Greataxe")->End(0.3f);
+    weapons.Rule("AXE")->Sym("Axe")->End(0.6f);
+    weapons.Rule("AXE")->Sym("Throwing Axe")->End(0.1f);
 
     weapons.Rule("SPEAR")->Sym("Spear")->End();
     weapons.Rule("SPEAR")->Sym("Giant Spear")->End();
