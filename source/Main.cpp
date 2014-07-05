@@ -22,14 +22,86 @@ int main() {
     // Quest generation rules
     // ==============================================
 
-    quests.Rule("Quest")->Sym("Objective")->Sym("Reward")->End();
-    quests.Rule("Objective")->Sym("KillMonsters")->End();
-    quests.Rule("Objective")->Sym("GatherItems")->End();
-    quests.Rule("Objective")->Sym("HuntForFood")->Sym("CookFood")->End();
-    quests.Rule("CookFood")->Sym("GatherWood")->Sym("LightFire")->Sym("GrillTheMeat")->End();
-    quests.Rule("GrillTheMeat")->Sym("EatFood")->End();
-    quests.Rule("GrillTheMeat")->Sym("DeliverFood")->End();
-
+    quests.Rule("Quest")->Sym("Objective")->Sym("\nComplete:")->Sym("Reward")->End();
+	
+	quests.Rule("Reward")->Sym("XP")->End();
+	quests.Rule("Reward")->Sym("RewardItem")->Sym("XP")->End();
+	quests.Rule("RewardItem")->Sym("A weapon of your choice.")->End();
+	quests.Rule("RewardItem")->Sym("A weapon of your choice.")->End();
+	
+	quests.Rule("XP")->Sym("100XP")->End();
+	quests.Rule("XP")->Sym("250XP")->End();
+	quests.Rule("XP")->Sym("600XP")->End();
+	quests.Rule("XP")->Sym("1100XP")->End();
+	quests.Rule("XP")->Sym("1800XP")->End();
+	quests.Rule("XP")->Sym("2500XP")->End();
+	quests.Rule("XP")->Sym("3600XP")->End();
+	quests.Rule("XP")->Sym("4200XP")->End();
+	quests.Rule("XP")->Sym("5000XP")->End();
+	
+	
+    quests.Rule("Objective")->Sym("Kill")->Sym("KillMonsters")->End();
+	quests.Rule("KillMonsters")->Sym("MonsterType")->Sym("Count")->End();
+	quests.Rule("MonsterType")->Sym("Goblin")->End();
+	quests.Rule("MonsterType")->Sym("Ogre")->End();
+	quests.Rule("MonsterType")->Sym("Undead")->End();
+	quests.Rule("MonsterType")->Sym("Lizardfolk")->End();
+	quests.Rule("MonsterType")->Sym("Gargoyle")->End();
+	quests.Rule("MonsterType")->Sym("Wraith")->End();
+	quests.Rule("MonsterType")->Sym("Hellhound")->End();
+	
+	
+	quests.Rule("KillMonsters")->Sym("KillBoss")->End();
+	quests.Rule("KillBoss")->Sym("MonsterBoss")->Sym("BossDifficulty")->End();
+	quests.Rule("MonsterBoss")->Sym("The Lich King")->End();
+	quests.Rule("MonsterBoss")->Sym("The Red Dragon")->End();
+	quests.Rule("MonsterBoss")->Sym("The Kraken")->End();
+	quests.Rule("MonsterBoss")->Sym("The Pirate Lord")->End();
+	quests.Rule("MonsterBoss")->Sym("The Witch of the Seven Realms")->End();
+	quests.Rule("BossDifficulty")->Sym("Normal")->End(0.7f);
+	quests.Rule("BossDifficulty")->Sym("Hard")->End(0.16f);
+	quests.Rule("BossDifficulty")->Sym("Harder")->End(0.1f);
+	quests.Rule("BossDifficulty")->Sym("Insane")->End(0.02f);
+	quests.Rule("BossDifficulty")->Sym("Nightmare")->End(0.015f);
+	quests.Rule("BossDifficulty")->Sym("MonoGiaTonLeuteri")->End(0.005f);
+	
+	
+    quests.Rule("Objective")->Sym("CollectItems")->Sym("Count")->End();
+	quests.Rule("CollectItems")->Sym("GatherHerbs")->End();
+	quests.Rule("CollectItems")->Sym("GatherOre")->End();
+	quests.Rule("CollectItems")->Sym("GatherWood")->End();
+	quests.Rule("CollectItems")->Sym("CollectMetalScraps")->End();
+	quests.Rule("CollectItems")->Sym("CollectMobLoot")->End();
+	
+	quests.Rule("Objective")->Sym("Deliver")->Sym("DeliverItems")->End();
+	quests.Rule("DeliverItems")->Sym("ItemType")->Sym("Count")->Sym("to")->Sym("NPC")->End();
+	quests.Rule("ItemType")->Sym("Weapons")->End();
+	quests.Rule("ItemType")->Sym("Food")->End();
+	quests.Rule("ItemType")->Sym("Crafting Materials")->End();
+	quests.Rule("ItemType")->Sym("Precious gems")->End();
+	quests.Rule("ItemType")->Sym("Letters")->End();
+	quests.Rule("ItemType")->Sym("Rare Pendant")->End(0.01f);
+	quests.Rule("ItemType")->Sym("Armor")->End();
+	quests.Rule("ItemType")->Sym("Spellbook")->End();
+	quests.Rule("NPC")->Sym("Greg the traveling merchant")->End();
+	quests.Rule("NPC")->Sym("Laura, Priestess of Cutethulhu")->End();
+	quests.Rule("NPC")->Sym("Kidd, the fearsome thief lord")->End();
+	quests.Rule("NPC")->Sym("Heine, cleric of the Sun-god")->End();
+	quests.Rule("NPC")->Sym("Dranzer the mighty warrior")->End();
+	
+	
+	quests.Rule("Count")->Sym("x 2")->End();
+	quests.Rule("Count")->Sym("x 3")->End();
+	quests.Rule("Count")->Sym("x 4")->End();
+	quests.Rule("Count")->Sym("x 5")->End();
+	quests.Rule("Count")->Sym("x 6")->End();
+	quests.Rule("Count")->Sym("x 7")->End();
+	quests.Rule("Count")->Sym("x 8")->End();
+	quests.Rule("Count")->Sym("x 9")->End();
+	quests.Rule("Count")->Sym("x 10")->End();
+	
+	
+	
 
     // ==============================================
     // Weapon generation rules
@@ -134,14 +206,14 @@ int main() {
     Generator contentGenerator;
 
 	// 4. give ruleset to generator
-    contentGenerator.SetRuleset(&weapons);
+    contentGenerator.SetRuleset(&quests);
 
 	// 5. ask generator to make stuff, dont forget to say "please".
     vector<string> gen;
 
     cout << "Press enter to generate more...\n===============================\n\n";
     do{
-        gen = contentGenerator.Generate("WEAPON");
+        gen = contentGenerator.Generate("Quest");
         for(vector<string>::iterator it = gen.begin(); it!=gen.end(); it++) {
             cout << *it << " ";
         }
