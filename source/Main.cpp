@@ -30,13 +30,15 @@ int main() {
 	
 	// NPC Names ===
 	
-	quests.Rule("NPC")->Sym("NAME")->Sym("of")->Sym("PLACE")->End();
-	quests.Rule("NPC")->Sym("NAME")->Sym("SURNAME")->End();
+	quests.Rule("NPC")->Sym("NPC_NORMAL")->End();
+	quests.Rule("NPC")->Sym("NPC_TITLED")->End();
+	quests.Rule("NPC_NORMAL")->Sym("NAME")->Sym("of")->Sym("PLACE")->End();
+	quests.Rule("NPC_NORMAL")->Sym("NAME")->Sym("SURNAME")->End();
 	
-	quests.Rule("NPC")->Sym("MALE_TITLE")->Sym("MALE_NAME")->End();
-	quests.Rule("NPC")->Sym("MALE_TITLE")->Sym("MALE_NAME")->Sym("of")->Sym("PLACE")->End();
-	quests.Rule("NPC")->Sym("FEMALE_TITLE")->Sym("FEMALE_NAME")->End();
-	quests.Rule("NPC")->Sym("FEMALE_TITLE")->Sym("FEMALE_NAME")->Sym("of")->Sym("PLACE")->End();
+	quests.Rule("NPC_TITLED")->Sym("MALE_TITLE")->Sym("MALE_NAME")->End();
+	quests.Rule("NPC_TITLED")->Sym("MALE_TITLE")->Sym("MALE_NAME")->Sym("of")->Sym("PLACE")->End();
+	quests.Rule("NPC_TITLED")->Sym("FEMALE_TITLE")->Sym("FEMALE_NAME")->End();
+	quests.Rule("NPC_TITLED")->Sym("FEMALE_TITLE")->Sym("FEMALE_NAME")->Sym("of")->Sym("PLACE")->End();
 	
 	quests.Rule("NAME")->Sym("MALE_NAME")->End();
 	quests.Rule("NAME")->Sym("FEMALE_NAME")->End();
@@ -177,8 +179,30 @@ int main() {
 	quests.Rule("ITEMS")->Sym("rare runestones")->End();
 	
 	// Items end ===
+	// Buildings
+	
+	quests.Rule("BUILDING")->Sym("house")->End();
+	quests.Rule("BUILDING")->Sym("mansion")->End();
+	quests.Rule("BUILDING")->Sym("shop")->End();
+	quests.Rule("BUILDING")->Sym("tavern")->End();
+	quests.Rule("BUILDING")->Sym("barn")->End();
+	quests.Rule("BUILDING")->Sym("church")->End();
+	quests.Rule("BUILDING")->Sym("mausoleum")->End();
+	quests.Rule("BUILDING")->Sym("graveyard")->End();
+	quests.Rule("BUILDING")->Sym("stable")->End();
+	quests.Rule("BUILDING")->Sym("water-mill")->End();
+	quests.Rule("BUILDING")->Sym("lighthouse")->End();
+	quests.Rule("BUILDING")->Sym("watchtower")->End();
+	quests.Rule("BUILDING")->Sym("wizards tower")->End();
+	quests.Rule("BUILDING")->Sym("bridge")->End();
+	quests.Rule("BUILDING")->Sym("castle")->End();
+	quests.Rule("BUILDING")->Sym("quarry")->End();
+	quests.Rule("BUILDING")->Sym("dungeon")->End();
+	
+	// Buildings end ===
 	// Relics
 	
+	quests.Rule("RELIC")->Sym("A map to a hidden artifact")->End();
 	quests.Rule("RELIC")->Sym("An ancient amulet")->End();
 	quests.Rule("RELIC")->Sym("A very rare tome of magic")->End();
 	quests.Rule("RELIC")->Sym("An enchanted crystal orb")->End();
@@ -217,12 +241,27 @@ int main() {
 	// Groups end ===
 	// Factions
 	
-	quests.Rule("FACTION")->Sym("Pirates of the West Seas")->End();
-	quests.Rule("FACTION")->Sym("Knights of the Grey-Skies")->End();
-	quests.Rule("FACTION")->Sym("Warriors of Berxley")->End();
+	quests.Rule("FACTION")->Sym("Pirates of the Withered Sea")->End();
+	quests.Rule("FACTION")->Sym("Red-fang Knights")->End();
+	quests.Rule("FACTION")->Sym("Noble Swordsmen of Berxley")->End();
 	quests.Rule("FACTION")->Sym("The Empire")->End();
 	
 	// Factions end ===
+	// Classes
+	
+	quests.Rule("CLASS")->Sym("Warrior")->End();
+	quests.Rule("CLASS")->Sym("Wizard")->End();
+	quests.Rule("CLASS")->Sym("Thief")->End();
+	quests.Rule("CLASS")->Sym("Paladin")->End();
+	quests.Rule("CLASS")->Sym("Cleric")->End();
+	quests.Rule("CLASS")->Sym("Sorcerer")->End();
+	quests.Rule("CLASS")->Sym("Barbarian")->End();
+	quests.Rule("CLASS")->Sym("Ranger")->End();
+	quests.Rule("CLASS")->Sym("Bard")->End();
+	quests.Rule("CLASS")->Sym("Necromancer")->End();
+	quests.Rule("CLASS")->Sym("Druid")->End();
+	
+	// Classes end ===
 	// The Quests
 	
 	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("lost")->Sym("RELIC")->Sym("!  Find it and bring it back.")->End();
@@ -231,9 +270,15 @@ int main() {
 	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to smuggle some")->Sym("ITEMS")->Sym("from")->Sym("PLACE")->Sym("to")->Sym("PLACE")->End();
 	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to assasinate")->Sym("NPC")->End();
 	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to deliver a package to")->Sym("NPC")->End();
-	quests.Rule("OBJECTIVE")->Sym("FACTION")->Sym("attacked")->Sym("GROUP")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym(".\nHelp the defenders.")->End();
-	quests.Rule("OBJECTIVE")->Sym("FACTION")->Sym("attacked")->Sym("GROUP")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym(".\nHelp the attackers.")->End();
+	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to deliver a message to")->Sym("NPC")->End();
+	quests.Rule("OBJECTIVE")->Sym("FACTION")->Sym("attacked")->Sym("GROUP")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym(".\nYour task is to help the defenders.")->End();
+	quests.Rule("OBJECTIVE")->Sym("FACTION")->Sym("attacked")->Sym("GROUP")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym(".\nYour task is to help the attackers.")->End();
 	quests.Rule("OBJECTIVE")->Sym("A mysterious monster appeared")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym("!  Your task is to kill it.")->End();
+	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("needs you as a champion to fight in a duel of honor. Your opponent is")->Sym("NPC")->End();
+	quests.Rule("OBJECTIVE")->Sym("Thieves are stealing the people of")->Sym("PLACE")->Sym(".  A wealthy merchant that goes by the name of")->Sym("NPC_NORMAL")->Sym("wants to sponsor you in order to stop them.")->End();
+	quests.Rule("OBJECTIVE")->Sym("A dead")->Sym("CLASS")->Sym("named")->Sym("NPC")->Sym("is haunting a")->Sym("BUILDING")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym(". Your task is to help the ghost find peace.")->End();
+	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to destroy a")->Sym("BUILDING")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->End();
+	quests.Rule("OBJECTIVE")->Sym("")
 	
 	// The Quests end ===
 	// ============================= QUEST RULESET ENDS HERE
