@@ -22,86 +22,223 @@ int main() {
     // Quest generation rules
     // ==============================================
 
-    quests.Rule("Quest")->Sym("Objective")->Sym("\nComplete:")->Sym("Reward")->End();
+    quests.Rule("QUEST")->Sym("OBJECTIVES")->End();
+	quests.Rule("OBJECTIVES")->Sym("OBJECTIVE")->End(0.6);
+	// quests.Rule("OBJECTIVES")->Sym("OBJECTIVE")->Sym("\n\n")->Sym("OBJECTIVES")->End(0.4);
+	// ^ quests with multiple objectives seem very difficult
+	// TODO: split OBJECTIVES so we have one BIG objective or a group of SMALLER ones.
 	
-	quests.Rule("Reward")->Sym("XP")->End();
-	quests.Rule("Reward")->Sym("RewardItem")->Sym("XP")->End();
-	quests.Rule("RewardItem")->Sym("A weapon of your choice.")->End();
-	quests.Rule("RewardItem")->Sym("A weapon of your choice.")->End();
+	// NPC Names ===
 	
-	quests.Rule("XP")->Sym("100XP")->End();
-	quests.Rule("XP")->Sym("250XP")->End();
-	quests.Rule("XP")->Sym("600XP")->End();
-	quests.Rule("XP")->Sym("1100XP")->End();
-	quests.Rule("XP")->Sym("1800XP")->End();
-	quests.Rule("XP")->Sym("2500XP")->End();
-	quests.Rule("XP")->Sym("3600XP")->End();
-	quests.Rule("XP")->Sym("4200XP")->End();
-	quests.Rule("XP")->Sym("5000XP")->End();
+	quests.Rule("NPC")->Sym("NAME")->Sym("of")->Sym("PLACE")->End();
+	quests.Rule("NPC")->Sym("NAME")->Sym("SURNAME")->End();
 	
+	quests.Rule("NPC")->Sym("MALE_TITLE")->Sym("MALE_NAME")->End();
+	quests.Rule("NPC")->Sym("MALE_TITLE")->Sym("MALE_NAME")->Sym("of")->Sym("PLACE")->End();
+	quests.Rule("NPC")->Sym("FEMALE_TITLE")->Sym("FEMALE_NAME")->End();
+	quests.Rule("NPC")->Sym("FEMALE_TITLE")->Sym("FEMALE_NAME")->Sym("of")->Sym("PLACE")->End();
 	
-    quests.Rule("Objective")->Sym("Kill")->Sym("KillMonsters")->End();
-	quests.Rule("KillMonsters")->Sym("MonsterType")->Sym("Count")->End();
-	quests.Rule("MonsterType")->Sym("Goblin")->End();
-	quests.Rule("MonsterType")->Sym("Ogre")->End();
-	quests.Rule("MonsterType")->Sym("Undead")->End();
-	quests.Rule("MonsterType")->Sym("Lizardfolk")->End();
-	quests.Rule("MonsterType")->Sym("Gargoyle")->End();
-	quests.Rule("MonsterType")->Sym("Wraith")->End();
-	quests.Rule("MonsterType")->Sym("Hellhound")->End();
+	quests.Rule("NAME")->Sym("MALE_NAME")->End();
+	quests.Rule("NAME")->Sym("FEMALE_NAME")->End();
 	
+	quests.Rule("MALE_TITLE")->Sym("Sir")->End(0.5);
+	quests.Rule("MALE_TITLE")->Sym("Baron")->End(0.2);
+	quests.Rule("MALE_TITLE")->Sym("Count")->End(0.15);
+	quests.Rule("MALE_TITLE")->Sym("Duke")->End(0.1);
+	quests.Rule("MALE_TITLE")->Sym("Prince")->End(0.05);
 	
-	quests.Rule("KillMonsters")->Sym("KillBoss")->End();
-	quests.Rule("KillBoss")->Sym("MonsterBoss")->Sym("BossDifficulty")->End();
-	quests.Rule("MonsterBoss")->Sym("The Lich King")->End();
-	quests.Rule("MonsterBoss")->Sym("The Red Dragon")->End();
-	quests.Rule("MonsterBoss")->Sym("The Kraken")->End();
-	quests.Rule("MonsterBoss")->Sym("The Pirate Lord")->End();
-	quests.Rule("MonsterBoss")->Sym("The Witch of the Seven Realms")->End();
-	quests.Rule("BossDifficulty")->Sym("Normal")->End(0.7f);
-	quests.Rule("BossDifficulty")->Sym("Hard")->End(0.16f);
-	quests.Rule("BossDifficulty")->Sym("Harder")->End(0.1f);
-	quests.Rule("BossDifficulty")->Sym("Insane")->End(0.02f);
-	quests.Rule("BossDifficulty")->Sym("Nightmare")->End(0.015f);
-	quests.Rule("BossDifficulty")->Sym("MonoGiaTonLeuteri")->End(0.005f);
+	quests.Rule("MALE_NAME")->Sym("Ron")->End();
+	quests.Rule("MALE_NAME")->Sym("Edgar")->End();
+	quests.Rule("MALE_NAME")->Sym("Gregor")->End();
+	quests.Rule("MALE_NAME")->Sym("John")->End();
+	quests.Rule("MALE_NAME")->Sym("Bran")->End();
+	quests.Rule("MALE_NAME")->Sym("Jake")->End();
+	quests.Rule("MALE_NAME")->Sym("Alan")->End();
+	quests.Rule("MALE_NAME")->Sym("William")->End();
 	
 	
-    quests.Rule("Objective")->Sym("CollectItems")->Sym("Count")->End();
-	quests.Rule("CollectItems")->Sym("GatherHerbs")->End();
-	quests.Rule("CollectItems")->Sym("GatherOre")->End();
-	quests.Rule("CollectItems")->Sym("GatherWood")->End();
-	quests.Rule("CollectItems")->Sym("CollectMetalScraps")->End();
-	quests.Rule("CollectItems")->Sym("CollectMobLoot")->End();
+	quests.Rule("FEMALE_TITLE")->Sym("Lady")->End(0.5);
+	quests.Rule("FEMALE_TITLE")->Sym("Baroness")->End(0.2);
+	quests.Rule("FEMALE_TITLE")->Sym("Countess")->End(0.15);
+	quests.Rule("FEMALE_TITLE")->Sym("Duchess")->End(0.1);
+	quests.Rule("FEMALE_TITLE")->Sym("Princess")->End(0.05);
 	
-	quests.Rule("Objective")->Sym("Deliver")->Sym("DeliverItems")->End();
-	quests.Rule("DeliverItems")->Sym("ItemType")->Sym("Count")->Sym("to")->Sym("NPC")->End();
-	quests.Rule("ItemType")->Sym("Weapons")->End();
-	quests.Rule("ItemType")->Sym("Food")->End();
-	quests.Rule("ItemType")->Sym("Crafting Materials")->End();
-	quests.Rule("ItemType")->Sym("Precious gems")->End();
-	quests.Rule("ItemType")->Sym("Letters")->End();
-	quests.Rule("ItemType")->Sym("Rare Pendant")->End(0.01f);
-	quests.Rule("ItemType")->Sym("Armor")->End();
-	quests.Rule("ItemType")->Sym("Spellbook")->End();
-	quests.Rule("NPC")->Sym("Greg the traveling merchant")->End();
-	quests.Rule("NPC")->Sym("Laura, Priestess of Cutethulhu")->End();
-	quests.Rule("NPC")->Sym("Kidd, the fearsome thief lord")->End();
-	quests.Rule("NPC")->Sym("Heine, cleric of the Sun-god")->End();
-	quests.Rule("NPC")->Sym("Dranzer the mighty warrior")->End();
+	quests.Rule("FEMALE_NAME")->Sym("Ravene")->End();
+	quests.Rule("FEMALE_NAME")->Sym("Lucia")->End();
+	quests.Rule("FEMALE_NAME")->Sym("Brienne")->End();
+	quests.Rule("FEMALE_NAME")->Sym("Lyda")->End();
+	quests.Rule("FEMALE_NAME")->Sym("Jasmine")->End();
+	quests.Rule("FEMALE_NAME")->Sym("Lenore")->End();
+	quests.Rule("FEMALE_NAME")->Sym("Olivia")->End();
+	quests.Rule("FEMALE_NAME")->Sym("Henriette")->End();
 	
+	quests.Rule("SURNAME")->Sym("Addinell")->End();
+	quests.Rule("SURNAME")->Sym("Ashdown")->End();
+	quests.Rule("SURNAME")->Sym("Arundel")->End();
+	quests.Rule("SURNAME")->Sym("Bainard")->End();
+	quests.Rule("SURNAME")->Sym("Baudry")->End();
+	quests.Rule("SURNAME")->Sym("Bertran")->End();
+	quests.Rule("SURNAME")->Sym("Cardon")->End();
+	quests.Rule("SURNAME")->Sym("Cooper")->End();
+	quests.Rule("SURNAME")->Sym("Clarke")->End();
+	quests.Rule("SURNAME")->Sym("Durerie")->End();
+	quests.Rule("SURNAME")->Sym("Digby")->End();
+	quests.Rule("SURNAME")->Sym("Durandhal")->End();
+	quests.Rule("SURNAME")->Sym("Esteney")->End();
+	quests.Rule("SURNAME")->Sym("Elers")->End();
+	quests.Rule("SURNAME")->Sym("Eustace")->End();
+	quests.Rule("SURNAME")->Sym("Fletcher")->End();
+	quests.Rule("SURNAME")->Sym("Fergant")->End();
+	quests.Rule("SURNAME")->Sym("Fossard")->End();
+	quests.Rule("SURNAME")->Sym("Godfrey")->End();
+	quests.Rule("SURNAME")->Sym("Gillain")->End();
+	quests.Rule("SURNAME")->Sym("Griffin")->End();
+	quests.Rule("SURNAME")->Sym("Hendry")->End();
+	quests.Rule("SURNAME")->Sym("Hughes")->End();
+	quests.Rule("SURNAME")->Sym("Herbard")->End();
+	quests.Rule("SURNAME")->Sym("Lovet")->End();
+	quests.Rule("SURNAME")->Sym("Ludel")->End();
+	quests.Rule("SURNAME")->Sym("Leigh")->End();
+	quests.Rule("SURNAME")->Sym("Maignart")->End();
+	quests.Rule("SURNAME")->Sym("Mallory")->End();
+	quests.Rule("SURNAME")->Sym("Montgomery")->End();
+	quests.Rule("SURNAME")->Sym("Nelond")->End();
+	quests.Rule("SURNAME")->Sym("Nesdin")->End();
+	quests.Rule("SURNAME")->Sym("Neville")->End();
+	quests.Rule("SURNAME")->Sym("Owens")->End();
+	quests.Rule("SURNAME")->Sym("Orlebar")->End();
+	quests.Rule("SURNAME")->Sym("Osmond")->End();
+	quests.Rule("SURNAME")->Sym("Rainecourt")->End();
+	quests.Rule("SURNAME")->Sym("Rolfe")->End();
+	quests.Rule("SURNAME")->Sym("Roard")->End();
+	quests.Rule("SURNAME")->Sym("Somneri")->End();
+	quests.Rule("SURNAME")->Sym("Strivelyn")->End();
+	quests.Rule("SURNAME")->Sym("Shaw")->End();
+	quests.Rule("SURNAME")->Sym("Talvace")->End();
+	quests.Rule("SURNAME")->Sym("Thaon")->End();
+	quests.Rule("SURNAME")->Sym("Taylor")->End();
+	quests.Rule("SURNAME")->Sym("Ventris")->End();
+	quests.Rule("SURNAME")->Sym("Wilde")->End();
+	quests.Rule("SURNAME")->Sym("Wissant")->End();
+	quests.Rule("SURNAME")->Sym("Wells")->End();
 	
-	quests.Rule("Count")->Sym("x 2")->End();
-	quests.Rule("Count")->Sym("x 3")->End();
-	quests.Rule("Count")->Sym("x 4")->End();
-	quests.Rule("Count")->Sym("x 5")->End();
-	quests.Rule("Count")->Sym("x 6")->End();
-	quests.Rule("Count")->Sym("x 7")->End();
-	quests.Rule("Count")->Sym("x 8")->End();
-	quests.Rule("Count")->Sym("x 9")->End();
-	quests.Rule("Count")->Sym("x 10")->End();
+	// Names end ===
+	// Places ===
 	
+	quests.Rule("PLACE")->Sym("Castle Frostford")->End();
+	quests.Rule("PLACE")->Sym("Town of Pontybridge")->End();
+	quests.Rule("PLACE")->Sym("Berxley")->End();
+	quests.Rule("PLACE")->Sym("City of Blackpool")->End();
+	quests.Rule("PLACE")->Sym("Marren's Eve Crossroads")->End();
+	quests.Rule("PLACE")->Sym("Wakefield")->End();
+	quests.Rule("PLACE")->Sym("Orrenshire")->End();
+	quests.Rule("PLACE")->Sym("City of Aysgarth")->End();
+	quests.Rule("PLACE")->Sym("Wolfden Village")->End();
+	quests.Rule("PLACE")->Sym("Lockinge")->End();
+	quests.Rule("PLACE")->Sym("Longdale Town")->End();
+	quests.Rule("PLACE")->Sym("Auchendale")->End();
+	quests.Rule("PLACE")->Sym("Bellmoral Falls")->End();
+	quests.Rule("PLACE")->Sym("Wealdstone")->End();
+	quests.Rule("PLACE")->Sym("Erith Castle")->End();
 	
+	// Places end ===
+	// Adverb of place 
 	
+	quests.Rule("ADVERB_OF_PLACE")->Sym("near")->End();
+	quests.Rule("ADVERB_OF_PLACE")->Sym("outside")->End();
+	quests.Rule("ADVERB_OF_PLACE")->Sym("around")->End();
+	quests.Rule("ADVERB_OF_PLACE")->Sym("east of the")->End();
+	quests.Rule("ADVERB_OF_PLACE")->Sym("west of the")->End();
+	quests.Rule("ADVERB_OF_PLACE")->Sym("north of the")->End();
+	quests.Rule("ADVERB_OF_PLACE")->Sym("south of the")->End();
+	
+	// Adverb of place end ===
+	// Items
+	
+	quests.Rule("ITEM")->Sym("a brand new armor")->End();
+	quests.Rule("ITEM")->Sym("a carrot")->End();
+	quests.Rule("ITEM")->Sym("a forbidden alcoholic beverage")->End();
+	quests.Rule("ITEM")->Sym("a forbidden tobacco")->End();
+	quests.Rule("ITEM")->Sym("a book")->End();
+	quests.Rule("ITEM")->Sym("a quil")->End();
+	quests.Rule("ITEM")->Sym("a garment")->End();
+	quests.Rule("ITEM")->Sym("a piece of armor")->End();
+	quests.Rule("ITEM")->Sym("a shield")->End();
+	quests.Rule("ITEM")->Sym("a mysterious dust")->End();
+	quests.Rule("ITEM")->Sym("a suspicious barrel")->End();
+	
+	quests.Rule("ITEMS")->Sym("vegetables")->End();
+	quests.Rule("ITEMS")->Sym("books")->End();
+	quests.Rule("ITEMS")->Sym("quils")->End();
+	quests.Rule("ITEMS")->Sym("garments")->End();
+	quests.Rule("ITEMS")->Sym("weapons")->End();
+	quests.Rule("ITEMS")->Sym("forbidden weapons")->End();
+	quests.Rule("ITEMS")->Sym("suspicious barrels")->End();
+	quests.Rule("ITEMS")->Sym("rare runestones")->End();
+	
+	// Items end ===
+	// Relics
+	
+	quests.Rule("RELIC")->Sym("An ancient amulet")->End();
+	quests.Rule("RELIC")->Sym("A very rare tome of magic")->End();
+	quests.Rule("RELIC")->Sym("An enchanted crystal orb")->End();
+	quests.Rule("RELIC")->Sym("The Ring of Memories")->End();
+	quests.Rule("RELIC")->Sym("A noble's legacy jewelry box")->End();
+	quests.Rule("RELIC")->Sym("The Stick of Truth")->End();
+	quests.Rule("RELIC")->Sym("A golden hairpin")->End();
+	quests.Rule("RELIC")->Sym("A pair of handcrafted dragon boots")->End();
+	quests.Rule("RELIC")->Sym("Krulgath's Great-Axe")->End();
+	quests.Rule("RELIC")->Sym("An ancient coin")->End();
+	quests.Rule("RELIC")->Sym("The mythic Dragon-tooth of Ulthar")->End();
+	quests.Rule("RELIC")->Sym("Hellmare the Greatsword")->End();
+	quests.Rule("RELIC")->Sym("The Chain of the Martyr")->End();
+	quests.Rule("RELIC")->Sym("Lyath the Longbow")->End();
+	quests.Rule("RELIC")->Sym("A small inscribed bell")->End();
+	quests.Rule("RELIC")->Sym("The Staff of Eternal Fire")->End();
+	quests.Rule("RELIC")->Sym("The Scepter of Nimble Water")->End();
+	quests.Rule("RELIC")->Sym("A key of the Grand Keymaster")->End();
+	quests.Rule("RELIC")->Sym("The Unshakable Shield")->End();
+	
+	// Relics end ===
+	// Groups
+	
+	quests.Rule("GROUP")->Sym("a group of peasants")->End();
+	quests.Rule("GROUP")->Sym("a group of farmers")->End();
+	quests.Rule("GROUP")->Sym("a group of adventurers")->End();
+	quests.Rule("GROUP")->Sym("a group of nobles")->End();
+	
+	quests.Rule("GROUP")->Sym("a caravan from the")->Sym("PLACE")->End();
+	quests.Rule("GROUP")->Sym("a group of citizens from")->Sym("PLACE")->End();
+	
+	quests.Rule("GROUP")->Sym("a squad of")->Sym("FACTION")->End();
+	quests.Rule("GROUP")->Sym("a battalion of")->Sym("FACTION")->End();
+	quests.Rule("GROUP")->Sym("a brigade of")->Sym("FACTION")->End();
+	
+	// Groups end ===
+	// Factions
+	
+	quests.Rule("FACTION")->Sym("Pirates of the West Seas")->End();
+	quests.Rule("FACTION")->Sym("Knights of the Grey-Skies")->End();
+	quests.Rule("FACTION")->Sym("Warriors of Berxley")->End();
+	quests.Rule("FACTION")->Sym("The Empire")->End();
+	
+	// Factions end ===
+	// The Quests
+	
+	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("lost")->Sym("RELIC")->Sym("!  Find it and bring it back.")->End();
+	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to steal")->Sym("RELIC")->End();
+	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to smuggle")->Sym("ITEM")->Sym("from")->Sym("PLACE")->Sym("to")->Sym("PLACE")->End();
+	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to smuggle some")->Sym("ITEMS")->Sym("from")->Sym("PLACE")->Sym("to")->Sym("PLACE")->End();
+	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to assasinate")->Sym("NPC")->End();
+	quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to deliver a package to")->Sym("NPC")->End();
+	quests.Rule("OBJECTIVE")->Sym("FACTION")->Sym("attacked")->Sym("GROUP")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym(".\nHelp the defenders.")->End();
+	quests.Rule("OBJECTIVE")->Sym("FACTION")->Sym("attacked")->Sym("GROUP")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym(".\nHelp the attackers.")->End();
+	quests.Rule("OBJECTIVE")->Sym("A mysterious monster appeared")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym("!  Your task is to kill it.")->End();
+	
+	// The Quests end ===
+	// ============================= QUEST RULESET ENDS HERE
+
+
 
     // ==============================================
     // Weapon generation rules
@@ -213,11 +350,11 @@ int main() {
 
     cout << "Press enter to generate more...\n===============================\n\n";
     do{
-        gen = contentGenerator.Generate("Quest");
+        gen = contentGenerator.Generate("QUEST");
         for(vector<string>::iterator it = gen.begin(); it!=gen.end(); it++) {
             cout << *it << " ";
         }
-        cout << endl << endl;
+        cout << endl << endl << "= = = = = = = = = = = =" << endl;
     } while(cin.get());
 
 	return 0;

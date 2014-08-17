@@ -34,10 +34,40 @@ solution "PCG-Gram"
 	location "./build"
 	targetdir "./build"
 
+
+project "PCG-GramLib"
+	kind "SharedLib"
+	language "C++"
+	location "./build/library"
+
+	includedirs {
+		path.getabsolute("./include/")
+	}
+
+	files {
+		"source/Ruleset.cpp",
+		"source/Generator.cpp"
+	}
+
+	configuration "Debug"
+        defines { "DEBUG" }
+        flags { "Symbols" }
+
+    configuration "Release"
+        defines { "NDEBUG" }
+        flags { "Optimize" }
+
+    configuration { "windows", "codelite" }
+        buildoptions { "-std=c++11" }
+
+    configuration { "linux", "gmake" }
+        buildoptions { "-std=c++11" }
+
+
 project "PCG-GramDemo"
 	kind "ConsoleApp"
 	language "C++"
-	location "./build/"
+	location "./build/demo"
 
 	includedirs {
 		path.getabsolute("./include/")
@@ -45,9 +75,11 @@ project "PCG-GramDemo"
 
 	files {
 		"source/Main.cpp",
-        "source/Ruleset.cpp",
-        "source/Generator.cpp"
 	} -- dot cpp files here
+
+	links { 
+		"PCG-GramLib"
+	}
 
 	configuration "Debug"
         defines { "DEBUG" }
