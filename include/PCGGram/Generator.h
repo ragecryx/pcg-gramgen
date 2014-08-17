@@ -1,9 +1,7 @@
 #ifndef PCGGRAM_GENERATOR_H
 #define PCGGRAM_GENERATOR_H
 
-#include <iostream>
-#include <vector>
-#include <stack>
+#include <string>
 
 using namespace std;
 
@@ -23,9 +21,11 @@ namespace PCGGrammar {
     class Generator {
         public:
             Generator();
+			Generator(string seed);
             ~Generator();
         private:
             Ruleset* mpRuleset;
+			string mSeedString;
         public:
             void SetRuleset(Ruleset* ruleset);
             ComponentVector Generate(string baseRule) const;

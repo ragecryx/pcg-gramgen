@@ -1,11 +1,13 @@
 #include <PCGGram/Ruleset.h>
 
+
 using namespace PCGGrammar;
 
 
 // Ruleset class = = = = = = =
 
 Ruleset::Ruleset() { }
+
 
 Ruleset::~Ruleset() { }
 
@@ -59,7 +61,9 @@ void __RulesetWork::End() {
     End(1.0f);
 }
 
+
 void __RulesetWork::End(float weight) {
     mpParent->AddRule(mParentRule, mRule, weight);
     delete this;
 }
+

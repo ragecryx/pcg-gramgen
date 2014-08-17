@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 namespace PCGGrammar {
     
     typedef vector<string> ComponentVector;

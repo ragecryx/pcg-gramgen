@@ -428,7 +428,7 @@ int main() {
 
 
 	// 3. create generator
-    Generator contentGenerator;
+    Generator contentGenerator("testSeedTEST");
 
 	// 4. give ruleset to generator
     contentGenerator.SetRuleset(&quests);
