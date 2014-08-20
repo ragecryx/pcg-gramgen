@@ -6,7 +6,7 @@
 using namespace std;
 
 
-#include "Ruleset.h"
+#include "Ruleset.hpp"
 
 
 namespace PCGGrammar {

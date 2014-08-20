@@ -70,11 +70,14 @@ project "PCG-GramDemo"
 	location "./build/demo"
 
 	includedirs {
-		path.getabsolute("./include/")
+		path.getabsolute("./include/"),
+		path.getabsolute("./source_demo/")
 	}
 
 	files {
-		"source/Main.cpp",
+		"source_demo/Main.cpp",
+		"source_demo/DemoQuests.cpp",
+		"source_demo/DemoWeapons.cpp"
 	} -- dot cpp files here
 
 	links { 
@@ -88,6 +91,9 @@ project "PCG-GramDemo"
     configuration "Release"
         defines { "NDEBUG" }
         flags { "Optimize" }
+
+    configuration { "windows" }
+    	defines { "WINDOWS_PLATFORM" }
 
     configuration { "windows", "codelite" }
         buildoptions { "-std=c++11" }

@@ -1,4 +1,4 @@
-#include "PCGGram/Generator.h"
+#include <PCGGram/Generator.hpp>
 
 #include <iterator>
 #include <random>
