@@ -146,10 +146,10 @@ void DemoQuests::Initialize () {
     quests.Rule("ADVERB_OF_PLACE")->Sym("near")->End();
     quests.Rule("ADVERB_OF_PLACE")->Sym("outside")->End();
     quests.Rule("ADVERB_OF_PLACE")->Sym("around")->End();
-    quests.Rule("ADVERB_OF_PLACE")->Sym("east of the")->End();
-    quests.Rule("ADVERB_OF_PLACE")->Sym("west of the")->End();
-    quests.Rule("ADVERB_OF_PLACE")->Sym("north of the")->End();
-    quests.Rule("ADVERB_OF_PLACE")->Sym("south of the")->End();
+    quests.Rule("ADVERB_OF_PLACE")->Sym("east of")->End();
+    quests.Rule("ADVERB_OF_PLACE")->Sym("west of")->End();
+    quests.Rule("ADVERB_OF_PLACE")->Sym("north of")->End();
+    quests.Rule("ADVERB_OF_PLACE")->Sym("south of")->End();
     
     // Adverb of place end ===
     // Items
@@ -296,10 +296,10 @@ void DemoQuests::Initialize () {
     // Jobs end ===
     // The Quests
     
-    quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("lost")->Sym("RELIC")->Sym("!  Find it and bring it back.")->End();
+    quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("lost a family heirloom, the")->Sym("RELIC")->Sym("!  Find it and bring it back.")->End();
     quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to steal")->Sym("RELIC")->End();
     quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to smuggle")->Sym("ITEM")->Sym("from")->Sym("PLACE")->Sym("to")->Sym("PLACE")->End();
-    quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to smuggle some")->Sym("ITEMS")->Sym("from")->Sym("PLACE")->Sym("to")->Sym("PLACE")->End();
+    quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to smuggle some")->Sym("ITEMS")->Sym("from the")->Sym("PLACE")->Sym("to")->Sym("PLACE")->End();
     quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to assasinate")->Sym("NPC")->End();
     quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to deliver a package to")->Sym("NPC")->End();
     quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to deliver a message to")->Sym("NPC")->End();
@@ -312,7 +312,7 @@ void DemoQuests::Initialize () {
     quests.Rule("OBJECTIVE")->Sym("NPC")->Sym("wants you to destroy a")->Sym("BUILDING")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->End();
     quests.Rule("OBJECTIVE")->Sym("A little girl named")->Sym("FEMALE_NAME")->Sym("has dark visions about a noble named")->Sym("MALE_TITLE")->Sym("MALE_NAME")->Sym(".\nFind and deal with the source of the kid's nightmares!")->End();
     quests.Rule("OBJECTIVE")->Sym("A little boy named")->Sym("MALE_NAME")->Sym("was kidnapped by an evil")->Sym("CLASS")->Sym("named")->Sym("MALE_NAME")->Sym(".\nRescue the kid!")->End();
-    quests.Rule("OBJECTIVE")->Sym("Recently")->Sym("GROUP")->Sym("in")->Sym("POINT_OF_INTEREST")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym("created a dangerous")->Sym("RPP_GROUP")->Sym("! You are commanded to end their heinous acts.")->End();
+    quests.Rule("OBJECTIVE")->Sym("Recently")->Sym("GROUP")->Sym("created a dangerous")->Sym("RPP_GROUP")->Sym("in")->Sym("POINT_OF_INTEREST")->Sym("ADVERB_OF_PLACE")->Sym("PLACE")->Sym("! You are commanded to end their heinous acts.")->End();
     
     // The Quests end ===
     // ============================= QUEST RULESET ENDS HERE

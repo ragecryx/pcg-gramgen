@@ -66,6 +66,7 @@ void DemoWeapons::Initialize () {
     weapons.Rule("STATTYPE")->Sym("Stamina")->End();
     weapons.Rule("STATTYPE")->Sym("Intelligence")->End();
     weapons.Rule("STATTYPE")->Sym("Wisdom")->End();
+    weapons.Rule("STATTYPE")->Sym("Ethereal")->End();
 
 
     weapons.Rule("ENCHANT")->Sym("of the Dragon")->End();
