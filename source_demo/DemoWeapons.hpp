@@ -14,13 +14,13 @@ using namespace PCGGrammar;
 
 
 class DemoWeapons : public Demo {
-	public:
-		DemoWeapons();
-		~DemoWeapons();
-	public:
-		virtual void Initialize();
-		virtual void Run();
-	private:
+    public:
+        DemoWeapons();
+        ~DemoWeapons();
+    public:
+        virtual void Initialize();
+        virtual void Run();
+    private:
         Ruleset     weapons;
         Generator   contentGenerator;
 };

@@ -14,13 +14,13 @@ using namespace PCGGrammar;
 
 
 class DemoQuests : public Demo {
-	public:
-		DemoQuests();
-		~DemoQuests();
-	public:
-		virtual void Initialize();
-		virtual void Run();
-	private:
+    public:
+        DemoQuests();
+        ~DemoQuests();
+    public:
+        virtual void Initialize();
+        virtual void Run();
+    private:
         Ruleset     quests;
         Generator   contentGenerator;
 };

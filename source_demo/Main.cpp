@@ -23,55 +23,55 @@ using namespace PCGGrammar;
 
 int main() {
 
-	Demo* currentDemo = 0;
-	bool isRunning = true;
-	char choice;
-	
-	do {
-		cout << "** Procedural Content Generation using Generative Grammars **\n\n";
-		cout << "Select demo:\n";
-		cout << "   Demo 1: Quest Generation (Description)\n";
-		cout << "   Demo 2: Weapon Generation\n";
-		cout << "   'q' to quit\n\n";
-		cout << "(Number)> ";
-		choice = cin.get();
-		
-		if( currentDemo != 0 ) {
-			delete currentDemo;
-			currentDemo = 0;
-		}
-		
-		switch (choice) {
-			case '1':
-				currentDemo = new DemoQuests();
-				break;
-			case '2':
-				currentDemo = new DemoWeapons();
-				break;
-			case 'q':
-				isRunning = false;
-				break;
-		}
-		
-		if( currentDemo!= 0 ) {
-			
-			currentDemo->Initialize();
-			currentDemo->Run();
-			
-			cin.get(); // registers 2 enters for some reason :/
-			
-			#ifdef WINDOWS_PLATFORM
-				system("cls");
-			#else
-				system("clear");
-			#endif
-		}
-		
-		
-	} while ( isRunning );
+    Demo* currentDemo = 0;
+    bool isRunning = true;
+    char choice;
+    
+    do {
+        cout << "** Procedural Content Generation using Generative Grammars **\n\n";
+        cout << "Select demo:\n";
+        cout << "   Demo 1: Quest Generation (Description)\n";
+        cout << "   Demo 2: Weapon Generation\n";
+        cout << "   'q' to quit\n\n";
+        cout << "(Number)> ";
+        choice = cin.get();
+        
+        if( currentDemo != 0 ) {
+            delete currentDemo;
+            currentDemo = 0;
+        }
+        
+        switch (choice) {
+            case '1':
+                currentDemo = new DemoQuests();
+                break;
+            case '2':
+                currentDemo = new DemoWeapons();
+                break;
+            case 'q':
+                isRunning = false;
+                break;
+        }
+        
+        if( currentDemo!= 0 ) {
+            
+            currentDemo->Initialize();
+            currentDemo->Run();
+            
+            cin.get(); // registers 2 enters for some reason :/
+            
+            #ifdef WINDOWS_PLATFORM
+                system("cls");
+            #else
+                system("clear");
+            #endif
+        }
+        
+        
+    } while ( isRunning );
 
-	delete currentDemo;
+    delete currentDemo;
 
-	return 0;
+    return 0;
 }
 

@@ -21,11 +21,11 @@ namespace PCGGrammar {
     class Generator {
         public:
             Generator();
-			Generator(string seed);
+            Generator(string seed);
             ~Generator();
         private:
             Ruleset* mpRuleset;
-			string mSeedString;
+            string mSeedString;
         public:
             void SetRuleset(Ruleset* ruleset);
             ComponentVector Generate(string baseRule) const;
