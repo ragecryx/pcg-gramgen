@@ -15,7 +15,7 @@ namespace PCGGrammar {
     typedef multimap< string, ComponentVector > RuleMap;
     typedef multimap< string, float > DistributionMap;
 
-    class __RulesetWork;
+    class __RuleInjector;
     
     // Ruleset class
     //
@@ -33,7 +33,7 @@ namespace PCGGrammar {
             RuleMap mRules;
             DistributionMap mRuleWeights;
         public:
-            __RulesetWork* Rule(string sym);
+            __RuleInjector* Rule(string sym);
             void AddRule(string rule, ComponentVector components, float weight);
             bool IsTerminal(string sym) const;
             vector<string> GetNonTerminals(void) const;
@@ -44,17 +44,17 @@ namespace PCGGrammar {
 
 
 
-    // __RulesetWork class, do not instantiate manually.
+    // __RuleInjector class, do not instantiate manually.
 
-    class __RulesetWork {
+    class __RuleInjector {
         public:
-            __RulesetWork(Ruleset* parentObject, string parentRule);
+            __RuleInjector(Ruleset* parentObject, string parentRule);
         private:
             Ruleset* mpParent;
             string mParentRule;
             vector<string> mRule;
         public:
-            __RulesetWork* Sym(string sym);
+            __RuleInjector* Sym(string sym);
             void End();
             void End(float weight);
     };

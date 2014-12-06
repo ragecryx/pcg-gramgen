@@ -13,8 +13,8 @@ Ruleset::Ruleset() { }
 Ruleset::~Ruleset() { }
 
 
-__RulesetWork* Ruleset::Rule(string sym) {
-    __RulesetWork* work = new __RulesetWork(this, sym);
+__RuleInjector* Ruleset::Rule(string sym) {
+    __RuleInjector* work = new __RuleInjector(this, sym);
     return work;
 }
 
@@ -54,27 +54,27 @@ pair< DistributionMap::const_iterator, DistributionMap::const_iterator > Ruleset
 }
 
 
-// __RulesetWork class = = = = = = =
+// __RuleInjector class = = = = = = =
 
-__RulesetWork::__RulesetWork(Ruleset* parentObject, string parentRule) {
+__RuleInjector::__RuleInjector(Ruleset* parentObject, string parentRule) {
     mpParent = parentObject;
     mParentRule = parentRule;
     mRule.clear();
 }
 
 
-__RulesetWork* __RulesetWork::Sym(string sym) {
+__RuleInjector* __RuleInjector::Sym(string sym) {
     mRule.push_back(sym);
     return this;
 }
 
 
-void __RulesetWork::End() {
+void __RuleInjector::End() {
     End(1.0f);
 }
 
 
-void __RulesetWork::End(float weight) {
+void __RuleInjector::End(float weight) {
     mpParent->AddRule(mParentRule, mRule, weight);
     delete this;
 }
