@@ -1,5 +1,6 @@
 #include <PCGGram/Ruleset.hpp>
 
+#include <iostream>
 
 using namespace PCGGrammar;
 
@@ -29,6 +30,17 @@ bool Ruleset::IsTerminal(string sym) const {
         return false;
     else
         return true;
+}
+
+
+vector<string> Ruleset::GetNonTerminals(void) const {
+    vector<string> res;
+
+    // Instead of it++ increment to the next unique key with upper_bound
+    for(RuleMap::const_iterator it = mRules.begin(); it!=mRules.end(); it=mRules.upper_bound(it->first))
+        res.push_back(it->first);
+
+    return res;
 }
 
 

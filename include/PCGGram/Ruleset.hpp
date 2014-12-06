@@ -36,6 +36,7 @@ namespace PCGGrammar {
             __RulesetWork* Rule(string sym);
             void AddRule(string rule, ComponentVector components, float weight);
             bool IsTerminal(string sym) const;
+            vector<string> GetNonTerminals(void) const;
             pair< RuleMap::const_iterator, RuleMap::const_iterator > GetRulesFor(string sym) const;
             pair< DistributionMap::const_iterator, DistributionMap::const_iterator > GetWeightsFor(string sym) const;
     };
