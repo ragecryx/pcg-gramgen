@@ -125,13 +125,13 @@ void DemoQuests::Initialize () {
     // Places ===
     
     quests.Rule("PLACE")->Sym("Castle Frostford")->End();
-    quests.Rule("PLACE")->Sym("Town of Pontybridge")->End();
+    quests.Rule("PLACE")->Sym("Pontybridge Town")->End();
     quests.Rule("PLACE")->Sym("Berxley")->End();
-    quests.Rule("PLACE")->Sym("City of Blackpool")->End();
+    quests.Rule("PLACE")->Sym("Blackpool City")->End();
     quests.Rule("PLACE")->Sym("Marren's Eve Crossroads")->End();
     quests.Rule("PLACE")->Sym("Wakefield")->End();
     quests.Rule("PLACE")->Sym("Orrenshire")->End();
-    quests.Rule("PLACE")->Sym("City of Aysgarth")->End();
+    quests.Rule("PLACE")->Sym("Aysgarth City")->End();
     quests.Rule("PLACE")->Sym("Wolfden Village")->End();
     quests.Rule("PLACE")->Sym("Lockinge")->End();
     quests.Rule("PLACE")->Sym("Longdale Town")->End();
